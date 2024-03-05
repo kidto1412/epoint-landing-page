@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+
+    <link rel="stylesheet" href="dist/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Web Epoint</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero align-middle">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h1 class="align-middle display-4 mt-5 w-75">
+              Welcome to landing page Epoint
+            </h1>
+            <p class="w-75">
+              This website is the landing page for the e-point system punishment
+              application, where this website will introduce you about the
+              application
+            </p>
+          </div>
+          <div class="col-md-6">
+            <img src="android.svg" alt="" class="img-hero" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about mt-5" id="about">
+      <div class="container">
+        <h3>About</h3>
+        <p class="text-body w-50">
+          The epoint system punishment application is an application that
+          records data on violations committed by students, students themselves
+          can see what violations they have committed in this application.
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">Platform</div>
+              <div class="card-body">
+                <p>Epoint application is for android</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">Role</div>
+              <div class="card-body">
+                <p class="">
+                  epoint application has two roles, teacher and student
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mt-3">
+            <div class="card">
+              <div class="card-header">Feature</div>
+              <div class="card-body">
+                <ul>
+                  <li>Face Reconition(optional) authenctication</li>
+                  <li>
+                    apply the Weight Product method to calculate which class has
+                    the most violations
+                  </li>
+                  <li>Record violation data</li>
+                  <li>etc...</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mt-3">
+            <div class="card">
+              <div class="card-header">Contact Developer</div>
+              <div class="card-body">
+                <ul>
+                  <li>Email: dimasqy.fahriz@gmail.com</li>
+                  <li>Instagram:@dimasqyfahriz</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact mt-5" id="contact">
+      <div class="container mb-5">
+        <h3>Contact Us</h3>
+        <di class="card">
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="name@example.com"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label"
+                  >Message</label
+                >
+                <textarea class="form-control" id="message" rows="3"></textarea>
+              </div>
+              <div class="mb-3">
+                <button
+                  class="btn btn-primary"
+                  onclick="sendEmail(); reset(); return false;"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </di>
+      </div>
+    </div>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="dist/js/bootstrap.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function sendEmail() {
+        (function () {
+          emailjs.init("ghOrk4KtilkbspJv5");
+        })();
+        var params = {
+          name: document.getElementById("name").value,
+          to: "zerocool5481@gmail.com",
+          from: document.getElementById("email").value,
+          reply_to: document.getElementById("email").value,
+          subject:
+            "New Contact from" + " " + document.getElementById("name").value,
+          message: document.getElementById("message").value,
+        };
+        var serviceId = "service_tbv2fd8";
+        var templateId = "template_xmmsl4l";
+        emailjs
+          .send(serviceId, templateId, params)
+          .then((res) => {
+            alert("email sent success");
+          })
+          .catch((e) => {
+            alert(e);
+          });
+      }
+      // function sendEmail() {
+      //   Email.send({
+      //     Host: "smtp.elasticemail.com",
+      //     Username: "zerocool5481@gmail.com",
+      //     Password: "B0718D4AB0E2AA739571BB6A06204E6727F7",
+      //     To: "zerool5481@gmail.com",
+      //     From: document.getElementById("email").value,
+      //     Subject: "New Contact Form Epoint",
+      //     Body:
+      //       "Name: " +
+      //       document.getElementById("name").value +
+      //       "<br> email: " +
+      //       document.getElementById("message").value,
+      //   }).then((message) => alert(message));
+      // }
+    </script>
+  </body>
+</html>
